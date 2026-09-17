@@ -1,11 +1,86 @@
 @import 'tailwindcss';
 
-@layer base {
-  body {
-    @apply m-0 min-w-80 bg-zinc-950 font-sans text-zinc-100 antialiased;
-  }
+@theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-tint: var(--tint);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-on-accent: var(--on-accent);
+  --font-sans: 'Inter', 'Segoe UI', sans-serif;
+}
 
+@layer base {
+  :root {
+    color-scheme: light;
+    --page: #fafbf9;
+    --surface: #ffffff;
+    --tint: #f4f6f3;
+    --ink: #19211b;
+    --muted: #5c675f;
+    --line: #dce3dc;
+    --accent: #287445;
+    --accent-hover: #205e38;
+    --on-accent: #ffffff;
+  }
+  :root[data-theme='dark'] {
+    color-scheme: dark;
+    --page: #101311;
+    --surface: #171b18;
+    --tint: #131814;
+    --ink: #eef2ed;
+    --muted: #a0ada2;
+    --line: #2c362e;
+    --accent: #a2d889;
+    --accent-hover: #b7e6a2;
+    --on-accent: #172312;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 9rem;
+  }
+  body {
+    @apply m-0 min-w-0 bg-page font-sans text-ink antialiased;
+  }
   #root {
     min-height: 100svh;
+  }
+  a,
+  button,
+  summary {
+    -webkit-tap-highlight-color: transparent;
+  }
+  a,
+  button {
+    transition:
+      color 160ms,
+      background-color 160ms;
+  }
+  button {
+    cursor: pointer;
+  }
+  nav a:hover {
+    color: var(--ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 5px;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      transition: none !important;
+    }
   }
 }

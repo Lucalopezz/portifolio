@@ -1,25 +1,34 @@
-import { Code2 } from 'lucide-react'
+import { Header } from './components/layout/Header'
+import { Footer } from './components/layout/Footer'
+import { HeroSection } from './components/sections/HeroSection'
+import { AboutSection } from './components/sections/AboutSection'
+import { ProjectsSection } from './components/sections/ProjectsSection'
+import { ExperienceSection } from './components/sections/ExperienceSection'
+import { ContactSection } from './components/sections/ContactSection'
 
 function App() {
   return (
-    <main className="flex min-h-svh items-center justify-center px-6 py-16">
-      <section className="w-full max-w-2xl" aria-labelledby="portfolio-title">
-        <Code2 className="mb-6 size-10 text-emerald-400" aria-hidden="true" />
-        <p className="text-sm font-medium uppercase tracking-widest text-emerald-400">
-          Em construção
-        </p>
-        <h1
-          id="portfolio-title"
-          className="mt-4 text-4xl font-bold tracking-tight sm:text-6xl"
-        >
-          Meu portfólio
-        </h1>
-        <p className="mt-6 max-w-lg text-lg leading-relaxed text-zinc-400">
-          Em breve, meus projetos, habilidades e experiências em desenvolvimento
-          web estarão por aqui.
-        </p>
-      </section>
-    </main>
+    <>
+      <a
+        href="#conteudo"
+        className="fixed left-4 top-4 z-50 -translate-y-24 rounded-lg bg-accent px-4 py-3 text-on-accent focus:translate-y-0"
+      >
+        Pular para o conteúdo
+      </a>
+      <Header />
+      <main
+        id="conteudo"
+        tabIndex={-1}
+        className="mx-auto max-w-6xl px-6 sm:px-10"
+      >
+        <HeroSection />
+        <AboutSection />
+        <ProjectsSection />
+        <ExperienceSection />
+        <ContactSection />
+      </main>
+      <Footer />
+    </>
   )
 }
 
