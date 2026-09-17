@@ -1,3 +1,7 @@
+import gestaoProjetosPublico from '../assets/gestao-projetos-publico.png'
+import myfinancesBoasVindas from '../assets/myfinances-boas-vindas.png'
+import myfinancesEstatisticas from '../assets/myfinances-estatisticas.png'
+
 export type Project = {
   name: string
   category: string
@@ -8,9 +12,43 @@ export type Project = {
   links: { label: string; url: string }[]
   detail: string
   features?: string[]
+  images?: {
+    src: string
+    alt: string
+    label: string
+    width: number
+    height: number
+  }[]
 }
 
 export const projects: Project[] = [
+  {
+    name: 'Gestão de Projetos',
+    category: 'Estágio · EESC-USP',
+    status: 'Uso interno · Código aberto USPdev',
+    description:
+      'Projetos, subprojetos, tarefas e reuniões em um só sistema para o ecossistema da EESC.',
+    contribution:
+      'Atuação como um dos desenvolvedores principais, implementando novos módulos e funcionalidades, com foco na interface visual.',
+    tags: ['Laravel', 'MySQL'],
+    links: [
+      {
+        label: 'Ver repositório',
+        url: 'https://github.com/uspdev/gestao-projetos',
+      },
+    ],
+    detail:
+      'O sistema reúne gestão de projetos e subprojetos, tarefas, reuniões, dashboards e envio de e-mails, com organização em módulos.',
+    images: [
+      {
+        src: gestaoProjetosPublico,
+        alt: 'Página pública de Gestão de Projetos com apresentação do sistema e seus recursos',
+        label: 'Página pública',
+        width: 1600,
+        height: 854,
+      },
+    ],
+  },
   {
     name: 'MyFinances',
     category: 'Projeto pessoal',
@@ -39,24 +77,22 @@ export const projects: Project[] = [
       'Despesas recorrentes com controle de pagamento',
       'Notificações antes do vencimento',
     ],
-  },
-  {
-    name: 'Gestão de Projetos',
-    category: 'Estágio · EESC-USP',
-    status: 'Uso interno · Código aberto USPdev',
-    description:
-      'Projetos, subprojetos, tarefas e reuniões em um só sistema para o ecossistema da EESC.',
-    contribution:
-      'Atuação como um dos desenvolvedores principais, implementando novos módulos e funcionalidades, com foco na interface visual.',
-    tags: ['Laravel', 'MySQL'],
-    links: [
+    images: [
       {
-        label: 'Ver repositório',
-        url: 'https://github.com/uspdev/gestao-projetos',
+        src: myfinancesBoasVindas,
+        alt: 'Página de boas-vindas do MyFinances com apresentação dos recursos',
+        label: 'Boas-vindas',
+        width: 1280,
+        height: 656,
+      },
+      {
+        src: myfinancesEstatisticas,
+        alt: 'Estatísticas da conta no MyFinances com indicadores e gráficos semestrais',
+        label: 'Estatísticas',
+        width: 1280,
+        height: 656,
       },
     ],
-    detail:
-      'O sistema reúne gestão de projetos e subprojetos, tarefas, reuniões, dashboards e envio de e-mails, com organização em módulos.',
   },
   {
     name: 'Equivalência',

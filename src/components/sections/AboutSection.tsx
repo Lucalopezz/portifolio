@@ -38,11 +38,18 @@ export function AboutSection() {
             className="shrink-0 text-accent"
             aria-hidden="true"
           />
-          <span>
-            Engenharia de Software · IFSP São Carlos
-            <br />
-            <span className="text-xs">Em andamento · 4º semestre</span>
-          </span>
+          <div className="space-y-3">
+            <p>
+              Engenharia de Software · IFSP São Carlos
+              <br />
+              <span className="text-xs">Em andamento · 4º semestre</span>
+            </p>
+            <p>
+              Ensino médio integrado ao Técnico em Redes de Computadores
+              <br />
+              <span className="text-xs">IFSP Câmpus Catanduva · Concluído</span>
+            </p>
+          </div>
         </div>
       </div>
       <div className="self-center space-y-6">

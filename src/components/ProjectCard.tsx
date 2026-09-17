@@ -2,10 +2,14 @@ import { Check, Layers } from 'lucide-react'
 import { cn } from '../lib/utils'
 import type { Project } from '../data/projects'
 import { ExternalLink } from './ExternalLink'
+import { ProjectImagesCarousel } from './ProjectImagesCarousel'
 import { Tags } from './Tags'
 
 export function ProjectCard({ project }: { project: Project }) {
-  const featured = Boolean(project.features)
+  const images = project.images ?? []
+  const hasImages = images.length > 0
+  const featured = hasImages || Boolean(project.features)
+
   return (
     <article
       className={cn(
@@ -14,9 +18,14 @@ export function ProjectCard({ project }: { project: Project }) {
       )}
     >
       <div
-        className={cn('h-full', featured && 'grid lg:grid-cols-[1.25fr_1fr]')}
+        className={cn(
+          featured && 'lg:grid',
+          hasImages
+            ? 'lg:grid-cols-[1fr_1.08fr]'
+            : project.features && 'lg:grid-cols-[1.25fr_1fr]',
+        )}
       >
-        <div className="flex h-full flex-col p-6 sm:p-8">
+        <div className="flex min-w-0 flex-col p-6 sm:p-8">
           <div className="mb-5 flex flex-wrap items-center gap-3 font-mono text-xs">
             <span className="rounded-full bg-accent/10 px-3 py-1 text-accent">
               {project.category}
@@ -42,11 +51,24 @@ export function ProjectCard({ project }: { project: Project }) {
           <div className="mt-6">
             <Tags items={project.tags} />
           </div>
-          {!featured && (
+          {!project.features && (
             <details className="mt-5 text-sm">
               <summary className="cursor-pointer text-muted">
                 Mais sobre o projeto
               </summary>
+              <p className="mt-3 leading-6 text-muted">{project.detail}</p>
+            </details>
+          )}
+          {project.features && hasImages && (
+            <details className="mt-5 text-sm">
+              <summary className="cursor-pointer text-muted">
+                Recursos e desafio técnico
+              </summary>
+              <ul className="mt-3 list-inside list-disc space-y-1 leading-6 text-muted">
+                {project.features.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
               <p className="mt-3 leading-6 text-muted">{project.detail}</p>
             </details>
           )}
@@ -64,7 +86,12 @@ export function ProjectCard({ project }: { project: Project }) {
             ))}
           </div>
         </div>
-        {project.features && (
+
+        {hasImages && (
+          <ProjectImagesCarousel projectName={project.name} images={images} />
+        )}
+
+        {project.features && !hasImages && (
           <div className="border-t border-line bg-tint p-6 sm:p-8 lg:border-t-0 lg:border-l">
             <p className="mb-5 font-mono text-xs tracking-wider text-muted">
               POR TRÁS DO PROJETO

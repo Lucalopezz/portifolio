@@ -19,8 +19,8 @@ export function ProjectsSection() {
         {projects.map((project) => (
           <ProjectCard key={project.name} project={project} />
         ))}
+        <SecondaryProjects />
       </div>
-      <SecondaryProjects />
     </section>
   )
 }

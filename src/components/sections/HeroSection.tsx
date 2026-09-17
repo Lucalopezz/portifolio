@@ -116,10 +116,6 @@ export function HeroSection() {
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-2 border-t border-line px-5 py-3 font-mono text-xs text-muted">
-          <span className="text-accent">↳</span> meu lugar favorito é no
-          back-end.
-        </div>
       </div>
     </section>
   )
